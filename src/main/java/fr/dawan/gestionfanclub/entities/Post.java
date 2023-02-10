@@ -31,7 +31,7 @@ public class Post implements Serializable {
 	private Club club;
 	
 	@ManyToOne 
-	private Utilisateur utilisateur;
+	private User user;
 	
 	private String contenu;
 }

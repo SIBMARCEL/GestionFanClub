@@ -7,18 +7,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.dawan.gestionfanclub.entities.Utilisateur;
-import fr.dawan.gestionfanclub.service.IServiceUtilisateur;
+import fr.dawan.gestionfanclub.entities.User;
+import fr.dawan.gestionfanclub.service.IServiceUser;
 
 @RestController
-@RequestMapping("/api/utilisateur")
-public class UtilisateurController {
+@RequestMapping("/api/user")
+public class ControllerUser {
 
 	@Autowired
-	private IServiceUtilisateur iServiceU;
+	private IServiceUser iServiceU;
 	
 	@GetMapping(value ="/admin", produces = "application/json")
-	public List<Utilisateur> findAllAdmin(){
+	public List<User> findAllAdmin(){
 		return iServiceU.findAllAdmin();
 	}
+	
 }
