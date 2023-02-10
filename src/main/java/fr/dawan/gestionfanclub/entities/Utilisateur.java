@@ -40,7 +40,9 @@ public class Utilisateur implements Serializable{
 	private LocalDate dateInscription;
 	@Column (unique =true, nullable = false)
 	private String email;
+	@Column (nullable = false)
 	private String nom;
+	@Column (nullable = false)
 	private String prenom;
 	@Column (unique =true, nullable = false)
 	private String pseudo;

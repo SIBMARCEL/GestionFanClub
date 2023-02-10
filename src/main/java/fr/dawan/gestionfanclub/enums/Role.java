@@ -5,4 +5,9 @@ public enum Role {
 	ADMIN,
 	USER,
 	SUBSCRIBER,
+	
+	
+	
+	
+	
 }
