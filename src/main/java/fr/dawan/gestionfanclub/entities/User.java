@@ -28,7 +28,7 @@ import lombok.ToString;
 @ToString
 @Data
 @Entity
-public class Utilisateur implements Serializable{
+public class User implements Serializable{
 
 	private static final long serialVersionUID = 1518112475622845530L;
 	
@@ -51,7 +51,7 @@ public class Utilisateur implements Serializable{
 	private Role role;
 	private String imgprofil;
 	
-	@OneToMany(mappedBy ="utilisateur")
+	@OneToMany(mappedBy ="user")
 	private List<Post> posts;
 }
 
