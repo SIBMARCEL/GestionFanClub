@@ -15,16 +15,16 @@ import fr.dawan.gestionfanclub.entities.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
-	@Query("FROM user u WHERE u.role =:role")
+	@Query("SELECT u FROM User u WHERE u.role =:role")
 	List<User> findAllByRole(String role, Pageable page);
 
-	@Query("SELECT * user u ")
+	@Query("SELECT u FROM User u ")
 	List<User> findAll();
 
-	@Query("FROM user u WHERE u.pseudo =:pseudo")
+	@Query("SELECT u FROM User u WHERE u.pseudo =:pseudo")
 	User findUserByPseudo(@Param("pseudo") String pseudo);
 
-	@Query("FROM user u WHERE u.active =:active")
+	@Query("SELECT u FROM User u WHERE u.active =:active")
 	List<User> findAllActive(@Param("active") boolean active,Pageable pageable);
 
 }

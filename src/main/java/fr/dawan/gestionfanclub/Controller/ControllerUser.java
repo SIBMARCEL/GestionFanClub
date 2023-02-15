@@ -41,6 +41,7 @@ public class ControllerUser {
 	}
 	@GetMapping(value="/pseudo/{pseudo}",produces="application/json")
 	public User findUserByPseudo(@PathVariable String pseudo) {
+		System.out.println(pseudo);
 		return iServiceU.findUserByPseudo(pseudo);
 	}
 	
