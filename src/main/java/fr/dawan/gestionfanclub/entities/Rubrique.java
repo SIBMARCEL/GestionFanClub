@@ -36,5 +36,5 @@ public class Rubrique implements Serializable {
 	private List <Club> club;
 	
 
-	private int ordre;
+	//private int ordre;
 }

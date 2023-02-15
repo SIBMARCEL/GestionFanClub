@@ -8,5 +8,5 @@ import fr.dawan.gestionfanclub.entities.Club;
 
 public interface ClubsRepository extends JpaRepository<Club , String >{
 
-	List<Club> findAll();
+//	List<Club> findAll();
 }

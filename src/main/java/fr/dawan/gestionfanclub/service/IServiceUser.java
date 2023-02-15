@@ -2,6 +2,7 @@ package fr.dawan.gestionfanclub.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import fr.dawan.gestionfanclub.entities.User;
@@ -10,8 +11,13 @@ import fr.dawan.gestionfanclub.entities.User;
 @Service
 public interface IServiceUser {
 
-	List<User> findAllAdmin();
-	//List<User> findAllUser();
-	//List<User> findAllSubscriber();
+	List<User> findAllAdmin(Pageable pageable);
+	List<User> findAllUser(Pageable pageable);
+	List<User> findAllSubscriber(Pageable pageable);
+	User findUserByPseudo (String pseudo);
+	List<User>findAllActive(boolean active,Pageable pageable);
+	void deleteUser(Long id);
+	User createUser(User user);
+	User updateUser(User user);
 	
 }
