@@ -23,11 +23,17 @@ public class ControllerUser {
 	@Autowired
 	private IServiceUser iServiceU;
 	
+
+	
+	
 	@GetMapping(value ="/admin", produces = "application/json")
 	public List<User> findAllAdmin(Pageable pageable){
+
+		
 		return iServiceU.findAllAdmin(pageable);
 		
 	}
+	
 	
 	@GetMapping(value="/subscriber", produces="application/json")
 	public List<User> findAllSubscriber(Pageable pageable){

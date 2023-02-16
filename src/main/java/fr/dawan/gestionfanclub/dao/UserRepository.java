@@ -15,8 +15,14 @@ import fr.dawan.gestionfanclub.entities.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
-	@Query("SELECT u FROM User u WHERE u.role =:role")
+	@Query("SELECT u FROM User u WHERE u.role =ADMIN")
 	List<User> findAllByRole(String role, Pageable page);
+	
+	
+	@Query("SELECT u FROM User u WHERE u.role =subscriber")
+	List<User> findAllSusbcriber(String role, Pageable page);
+	
+	
 
 	@Query("SELECT u FROM User u ")
 	List<User> findAll();

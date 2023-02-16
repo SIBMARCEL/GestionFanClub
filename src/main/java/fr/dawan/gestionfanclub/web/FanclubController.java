@@ -14,4 +14,5 @@ public class FanclubController {
     public String showCreateNewAccountForm() {
         return "new_account_form";
     }
+    
 }
