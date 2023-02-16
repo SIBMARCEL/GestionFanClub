@@ -2,6 +2,7 @@ package fr.dawan.gestionfanclub.Controller;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +29,11 @@ public class AuthController {
 	@GetMapping("/index")
 	public String home() {
 		return "index";
+	}
+	
+	@GetMapping("/admin")
+	public String admin() {
+		return "admin";
 	}
 	
     @GetMapping("/register")
@@ -62,5 +68,11 @@ public class AuthController {
         return "redirect:/index";
     }
     
+    @GetMapping("/user")
+    public String user(Model model){
+        List<User> user = iServiceUser.findAllUser(null);
+        model.addAttribute("user", user);
+        return "user";
+    }
     
 }
