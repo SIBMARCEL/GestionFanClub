@@ -2,6 +2,7 @@ package fr.dawan.gestionfanclub.entities;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.dawan.gestionfanclub.enums.Role;
@@ -49,6 +50,8 @@ public class User implements Serializable{
 	private boolean active;
 	@Enumerated(EnumType.STRING)
 	private Role role;
+	@Column(nullable=false)
+	private String password;
 	private String imgprofil;
 	
 	@OneToMany(mappedBy ="user")

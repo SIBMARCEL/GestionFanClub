@@ -18,18 +18,35 @@
         <div class="card shadow-lg">
           <div class="card-body p-5">
             <h1 class="fs-4 card-title fw-bold mb-4">Register</h1>
-            <form action="#" th:action="@{/newaccount}" method="post" class="needs-validation" novalidate="" autocomplete="off">
+            <form action="#" th:action="@{/newaccount/save}" th:object="${user}" method="post" class="needs-validation" novalidate="" autocomplete="off">
+             
               <div class="mb-3">
-                <label class="mb-2 text-muted" for="name">Name</label>
-                <input id="name" type="text" class="form-control" name="name" value="" required autofocus>
+                <label class="mb-2 text-muted" for="name">First Name</label>
+                <input th:field="*{firstName}" id="name" type="text" class="form-control" name="name" value="" required autofocus>
                 <div class="invalid-feedback">
-                  Name is required
+                  First Name is required
+                </div>
+                
+              </div>
+               <div class="mb-3">
+                <label class="mb-2 text-muted" for="name">Last Name</label>
+                <input th:field="*{lastName}" id="name" type="text" class="form-control" name="name" value="" required autofocus>
+                <div class="invalid-feedback">
+                  Last Name is required
+                </div>
+              </div>
+              
+                <div class="mb-3">
+                <label class="mb-2 text-muted" for="name">Pseudo</label>
+                <input th:field="*{pseudo}" id="name" type="text" class="form-control" name="name" value="" required autofocus>
+                <div class="invalid-feedback">
+                  Pseudo is required
                 </div>
               </div>
 
               <div class="mb-3">
                 <label class="mb-2 text-muted" for="email">E-Mail Address</label>
-                <input id="email" type="email" class="form-control" name="email" value="" required>
+                <input th:field="*{email}" id="email" type="email" class="form-control" name="email" value="" required>
                 <div class="invalid-feedback">
                   Email is invalid
                 </div>
@@ -37,7 +54,7 @@
 
               <div class="mb-3">
                 <label class="mb-2 text-muted" for="password">Password</label>
-                <input id="password" type="password" class="form-control" name="password" required>
+                <input th:field="*{password}" id="password" type="password" class="form-control" name="password" required>
                 <div class="invalid-feedback">
                   Password is required
                 </div>
