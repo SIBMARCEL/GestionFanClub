@@ -59,6 +59,8 @@ public class AuthController {
         }
         User user = new User(0l,0,LocalDate.now(),LocalDate.now(),userDto.getEmail(),userDto.getFirstName(),userDto.getLastName(),userDto.getPseudo(),false ,Role.USER, userDto.getPassword(),"", new ArrayList<>());
         iServiceUser.createUser(user);
-        return "redirect:/register?success";
+        return "redirect:/index";
     }
+    
+    
 }
