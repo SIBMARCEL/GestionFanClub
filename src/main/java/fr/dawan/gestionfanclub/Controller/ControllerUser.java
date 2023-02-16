@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,9 +39,14 @@ public class ControllerUser {
 		return iServiceU.findAllUser(pageable);
 	}
 	@GetMapping(value="/pseudo/{pseudo}",produces="application/json")
-	public User findUserByPseudo(@PathVariable String pseudo) {
-		System.out.println(pseudo);
-		return iServiceU.findUserByPseudo(pseudo);
+	public ResponseEntity<User> findUserByPseudo(@PathVariable String pseudo) {
+		User u = iServiceU.findUserByPseudo(pseudo);
+		if(u != null) {
+			return ResponseEntity.ok(u);
+		}
+		else {
+			return ResponseEntity.notFound().build();
+		}
 	}
 	
 	@GetMapping(value="/active", produces = "application/json")
@@ -48,23 +54,31 @@ public class ControllerUser {
 		return iServiceU.findAllActive(active, pageable);
 	}
 	
-	@DeleteMapping(value="/{id}",produces="application/json",consumes = "application/json")
-	public void deleteUser(@PathVariable Long id) {
+	@DeleteMapping(value="/{id}")
+	public ResponseEntity<String> deleteUser(@PathVariable long id) {
+		try {
+			iServiceU.deleteUser(id);
+			return ResponseEntity.ok("L'utilisateur a bien été supprimer");
+		} catch (Exception e) {
+			return ResponseEntity.notFound().build();
+		}
+	}
 	
-		iServiceU.deleteUser(id);
-		
+	@PostMapping(produces="application/json", consumes="application/json")
+	public ResponseEntity<String> createUser(@RequestBody User user) {
+		try {
+			iServiceU.createUser(user);
+			return ResponseEntity.ok("L'utilisateur "+user+" a été créer");
+		} catch (Exception e) {
+			return ResponseEntity.notFound().build();
+		}
 		
 	}
 	
-//	@PostMapping(produces="application/json", consumes="application.json")
-//	public User createUser(@RequestBody User user) {
-//		return iServiceU.createUser(user);
-//	}
-	
-//	@PutMapping(produces ="application/json", consumes="application.json")
-//	public User updateUser(@RequestBody User user) {
-//		return iServiceU.updateUser(user);
-//	}
+	@PutMapping(produces ="application/json", consumes="application/json")
+	public User updateUser(@RequestBody User user) {
+		return iServiceU.updateUser(user);
+	}
 	
 	
 	

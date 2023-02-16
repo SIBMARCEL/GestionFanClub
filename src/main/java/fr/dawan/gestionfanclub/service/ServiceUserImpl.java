@@ -43,7 +43,7 @@ public class ServiceUserImpl implements IServiceUser{
 	}
 
 	@Override
-	public void deleteUser(Long id) {
+	public void deleteUser(long id) {
 		userRepository.deleteById(id);
 	}
 

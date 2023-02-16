@@ -27,5 +27,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
 	@Query("SELECT u FROM User u WHERE u.active =:active")
 	List<User> findAllActive(@Param("active") boolean active,Pageable pageable);
+	
+//	@Query("DELETE FROM User u WHERE u.id =:id")
+//	User deleteById(@Param("id") long id);
 
 }
