@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import fr.dawan.gestionfanclub.entities.User;
+import fr.dawan.gestionfanclub.enums.Role;
 
 @Repository
 
@@ -16,7 +17,7 @@ import fr.dawan.gestionfanclub.entities.User;
 public interface UserRepository extends JpaRepository<User, Long> {
 
 	@Query("SELECT u FROM User u WHERE u.role =:role")
-	List<User> findAllByRole(String role, Pageable page);
+	List<User> findAllByRole(Role role, Pageable page);
 
 	@Query("SELECT u FROM User u ")
 	List<User> findAll();

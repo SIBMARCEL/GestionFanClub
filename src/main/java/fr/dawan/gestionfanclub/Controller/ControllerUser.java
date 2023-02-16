@@ -26,7 +26,6 @@ public class ControllerUser {
 	@GetMapping(value ="/admin", produces = "application/json")
 	public List<User> findAllAdmin(Pageable pageable){
 		return iServiceU.findAllAdmin(pageable);
-		
 	}
 	
 	@GetMapping(value="/subscriber", produces="application/json")
@@ -35,7 +34,6 @@ public class ControllerUser {
 	}
 	
 	@GetMapping(value="/user",produces="application/json")
-	
 	public List<User> findAllUser(Pageable pageable){
 		return iServiceU.findAllUser(pageable);
 	}
@@ -45,9 +43,14 @@ public class ControllerUser {
 		return iServiceU.findUserByPseudo(pseudo);
 	}
 	
+	@GetMapping(value="/active", produces = "application/json")
+	public List<User> findAllActive(boolean active, Pageable pageable){
+		return iServiceU.findAllActive(active, pageable);
+	}
+	
 	@DeleteMapping(value="/{id}",produces="application/json",consumes = "application/json")
 	public void deleteUser(@PathVariable Long id) {
-		
+	
 		iServiceU.deleteUser(id);
 		
 		

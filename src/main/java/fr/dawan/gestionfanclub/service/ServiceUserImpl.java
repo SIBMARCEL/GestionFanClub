@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import fr.dawan.gestionfanclub.dao.UserRepository;
 import fr.dawan.gestionfanclub.entities.User;
+import fr.dawan.gestionfanclub.enums.Role;
 import jakarta.transaction.Transactional;
 
 @Service
@@ -18,7 +19,7 @@ public class ServiceUserImpl implements IServiceUser{
 
 	@Override
 	public List<User> findAllAdmin(Pageable pageable) {
-	 return  userRepository.findAllByRole("ADMIN", pageable);
+	 return  userRepository.findAllByRole(Role.ADMIN, pageable);
 	}
 
 	@Override
@@ -28,7 +29,7 @@ public class ServiceUserImpl implements IServiceUser{
 
 	@Override
 	public List<User> findAllSubscriber(Pageable pageable) {
-		 return  userRepository.findAllByRole("SUBSCRIBER", pageable);
+		 return  userRepository.findAllByRole(Role.SUBSCRIBER, pageable);
 	}
 
 	@Override
