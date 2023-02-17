@@ -95,7 +95,6 @@ public class AuthController {
     	userdto.setEmail(user.getEmail());
     	userdto.setPseudo(user.getPseudo());
     	userdto.setPassword(user.getPassword());
-    	userdto.setRole(user.getRole());
     	userdto.setId(id);
     	
     	
@@ -105,8 +104,8 @@ public class AuthController {
 
 
 
-@PostMapping("/update")
-public String updatedUser(@Valid @ModelAttribute("user") UserDto userDto,
+    @PostMapping("/update")
+    public String updatedUser(@Valid @ModelAttribute("user") UserDto userDto,
         BindingResult result,
         Model model) {
 	
@@ -129,18 +128,26 @@ public String updatedUser(@Valid @ModelAttribute("user") UserDto userDto,
     user.setPseudo(userDto.getPseudo());
     user.setEmail(userDto.getEmail());
     user.setPassword(userDto.getPassword());
-    user.setRole(userDto.getRole());
-    
-    
-    
-    
+
     iServiceUser.updateUser(user);
     return "redirect:/admin";
-	
-	
-	
-	
 }
+    @GetMapping("/view")
+    public String viewUser(@RequestParam Long id, Model model) {
+    	User user=iServiceUser.findUserByidUser(id);
+    	UserDto userdto = new UserDto();
+    	userdto.setFirstName(user.getNom());
+    	userdto.setLastName(user.getPrenom());
+    	userdto.setEmail(user.getEmail());
+    	userdto.setPseudo(user.getPseudo());
+    	userdto.setPassword(user.getPassword());
+    	userdto.setId(id);
+    	
+    	model.addAttribute("user",userdto);
+        return "view";
+    }
+
 }
+
     
     

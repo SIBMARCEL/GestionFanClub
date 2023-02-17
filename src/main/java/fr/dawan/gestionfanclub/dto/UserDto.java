@@ -1,6 +1,5 @@
 package fr.dawan.gestionfanclub.dto;
 
-import fr.dawan.gestionfanclub.enums.Role;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
@@ -32,6 +31,4 @@ public class UserDto {
 	@NotEmpty(message = "Password should not be empty")
 	private String password;
 	
-	@NotEmpty
-	private Role role;
 }
