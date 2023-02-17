@@ -11,9 +11,13 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import fr.dawan.gestionfanclub.dao.UserRepository;
 import fr.dawan.gestionfanclub.dto.UserDto;
 import fr.dawan.gestionfanclub.entities.User;
 import fr.dawan.gestionfanclub.enums.Role;
@@ -22,6 +26,10 @@ import jakarta.validation.Valid;
 
 @Controller
 public class AuthController {
+	
+	
+	
+	
 	
 	@Autowired
 	private IServiceUser iServiceUser;
@@ -77,15 +85,54 @@ public class AuthController {
 		return "redirect:/admin";
 	}
     
+    
     @GetMapping("/update")
-    public String updateUser(Model model) {
-    	UserDto user = new UserDto();
-    	model.addAttribute("user",user);
+    public String updateUser(@RequestParam Long id, Model model) {
+    	User user=iServiceUser.findUserByidUser(id);
+    	UserDto userdto = new UserDto();
+    	userdto.setFirstName(user.getNom());
+    	userdto.setLastName(user.getPrenom());
+    	userdto.setId(id);
+    	
+    	
+    	model.addAttribute("user",userdto);
         return "update";
     }
+
+
+
+@PostMapping("/update")
+public String updatedUser(@Valid @ModelAttribute("user") UserDto userDto,
+        BindingResult result,
+        Model model) {
+	
+	
+	User existingUser = iServiceUser.findUserByPseudo(userDto.getPseudo());
+
+    if(existingUser != null && existingUser.getPseudo() != null && !existingUser.getPseudo().isEmpty()){
+        result.rejectValue("pseudo", null, "There is already an account registered with the same pseudo");
+    }
+
+    if(result.hasErrors()){
+        model.addAttribute("user", userDto);
+        return "/new_account_form";
+    }
+    
+    User user=iServiceUser.findUserByidUser(userDto.getId());
+    
+    user.setPrenom(userDto.getFirstName());
+    user.setNom(userDto.getLastName());
     
     
     
     
-    
+    iServiceUser.updateUser(user);
+    return "redirect:/index";
+	
+	
+	
+	
 }
+}
+    
+    
