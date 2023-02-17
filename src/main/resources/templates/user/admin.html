@@ -20,6 +20,7 @@
       <th scope="col">Pseudo</th>
       <th scope="col">mail</th>
       <th scope="col">Role</th>
+      <th scope="col">Mot de passe</th>
     </tr>
   </thead>
   <tbody>
@@ -29,7 +30,8 @@
                 <td th:text ="${user.prenom}"></td>
                 <td th:text ="${user.pseudo}"></td>
                 <td th:text ="${user.email}"></td>
-                <td th:text ="${user.role}"></td>
+                <td th:text ="${user.password}"></td>
+                
                    	<td>
 					    <a th:href="@{/view(id=${user.id})}" class="btn btn-secondary mx-2" >View</a>
                     	<a th:href="@{/update(id=${user.id})}" class="btn btn-danger ml-2">Update</a>

@@ -16,10 +16,10 @@ public class UserDto {
 	private long id;
 	
 	@NotEmpty
-	private String firstName;
+	private String prenom;
 	
 	@NotEmpty
-	private String lastName;
+	private String nom;
 	
 	@NotEmpty
 	private String pseudo;

@@ -58,8 +58,13 @@ public class ServiceUserImpl implements IServiceUser{
 	}
 
 	@Override
-	public User findUserByidUser(long id) {
+	public User findUserByid(long id) {
 		return userRepository.findUserById(id);
+	}
+
+	@Override
+	public User findUserByEmail(String email) {
+		return userRepository.findUserByEmail(email);
 	}
 
 	@Override

@@ -15,8 +15,9 @@ public interface IServiceUser {
 	List<User> findAllUser(Pageable pageable);
 	List<User> findAllSubscriber(Pageable pageable);
 	User findAll();
-	User findUserByidUser(long id);
+	User findUserByid(long id);
 	User findUserByPseudo(String pseudo);
+	User findUserByEmail(String email);
 	List<User>findAllActive(boolean active,Pageable pageable);
 	void deleteUser(long id);
 	User createUser(User user);

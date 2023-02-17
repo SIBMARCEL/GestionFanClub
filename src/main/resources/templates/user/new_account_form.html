@@ -17,22 +17,22 @@
         </div>
         <div class="card shadow-lg">
           <div class="card-body p-5">
-            <h1 class="fs-4 card-title fw-bold mb-4">Update Account</h1>
+            <h1 class="fs-4 card-title fw-bold mb-4">Inscription</h1>
             <form action="#" th:action="@{/newaccount/save}" th:object="${user}" method="post" class="needs-validation" novalidate="" autocomplete="off">
              
               <div class="mb-3">
-                <label class="mb-2 text-muted" for="name">First Name</label>
-                <input th:field="*{firstName}" id="name" type="text" class="form-control" name="name" value="" required autofocus>
+                <label class="mb-2 text-muted" for="name">Prénom</label>
+                <input th:field="*{prenom}" id="name" type="text" class="form-control" name="name" value="" required autofocus>
                 <div class="invalid-feedback">
-                  First Name is required
+                  Prénom requis
                 </div>
                 
               </div>
                <div class="mb-3">
-                <label class="mb-2 text-muted" for="name">Last Name</label>
-                <input th:field="*{lastName}" id="name" type="text" class="form-control" name="name" value="" required autofocus>
+                <label class="mb-2 text-muted" for="name">Nom</label>
+                <input th:field="*{Nom}" id="name" type="text" class="form-control" name="name" value="" required autofocus>
                 <div class="invalid-feedback">
-                  Last Name is required
+                  Nom requis
                 </div>
               </div>
               
@@ -40,7 +40,7 @@
                 <label class="mb-2 text-muted" for="name">Pseudo</label>
                 <input th:field="*{pseudo}" id="name" type="text" class="form-control" name="name" value="" required autofocus>
                 <div class="invalid-feedback">
-                  Pseudo is required
+                  Pseudo requis
                 </div>
               </div>
 
@@ -48,7 +48,7 @@
                 <label class="mb-2 text-muted" for="email">E-Mail Address</label>
                 <input th:field="*{email}" id="email" type="email" class="form-control" name="email" value="" required>
                 <div class="invalid-feedback">
-                  Email is invalid
+                  Email invalide
                 </div>
               </div>
 
@@ -56,29 +56,26 @@
                 <label class="mb-2 text-muted" for="password">Password</label>
                 <input th:field="*{password}" id="password" type="password" class="form-control" name="password" required>
                 <div class="invalid-feedback">
-                  Password is required
+                  mot de passe obligatoire
                 </div>
               </div>
 
-           <input th:field="*{id} " name="id" type="hidden"/>
-           
-           
-           
+              <p class="form-text text-muted mb-3">
+                By registering you agree with our terms and condition.
+              </p>
+
               <div class="align-items-center d-flex">
-				  
-				  
-				  
-				  
                 <button type="submit" class="btn btn-primary ms-auto">
-                  Update
+                  S'inscrire'
                 </button>
               </div>
             </form>
-            
-            
-            
           </div>
-         
+          <div class="card-footer py-3 border-0">
+            <div class="text-center">
+              Already have an account? <a th:href="@{/register}" class="text-dark">Login</a>
+            </div>
+          </div>
         </div>
         <div class="text-center mt-5 text-muted">
           Copyright &copy; 2022-2023 &mdash; Projet Dawan Fanclub

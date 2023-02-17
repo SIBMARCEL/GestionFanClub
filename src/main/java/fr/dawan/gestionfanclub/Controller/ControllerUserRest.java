@@ -40,6 +40,18 @@ public class ControllerUserRest {
 	public List<User> findAllUser(Pageable pageable){
 		return iServiceU.findAllUser(pageable);
 	}
+	
+	@GetMapping(value="/email/{email}",produces="application/json")
+	public ResponseEntity<User> findUserByEmail(@PathVariable String email) {
+		User u = iServiceU.findUserByEmail(email);
+		if(u != null) {
+			return ResponseEntity.ok(u);
+		}
+		else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+	
 	@GetMapping(value="/pseudo/{pseudo}",produces="application/json")
 	public ResponseEntity<User> findUserByPseudo(@PathVariable String pseudo) {
 		User u = iServiceU.findUserByPseudo(pseudo);
