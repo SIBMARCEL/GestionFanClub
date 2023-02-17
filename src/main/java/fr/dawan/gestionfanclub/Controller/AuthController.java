@@ -4,13 +4,17 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import fr.dawan.gestionfanclub.dao.UserRepository;
 import fr.dawan.gestionfanclub.dto.UserDto;
 import fr.dawan.gestionfanclub.entities.User;
 import fr.dawan.gestionfanclub.enums.Role;
@@ -20,20 +24,12 @@ import jakarta.validation.Valid;
 @Controller
 public class AuthController {
 	
+	@Autowired
 	private IServiceUser iServiceUser;
-	
-	public AuthController(IServiceUser iServiceUser) {
-		this.iServiceUser = iServiceUser;
-	}
 	
 	@GetMapping("/index")
 	public String home() {
 		return "index";
-	}
-	
-	@GetMapping("/admin")
-	public String admin() {
-		return "admin";
 	}
 	
     @GetMapping("/register")
@@ -68,11 +64,18 @@ public class AuthController {
         return "redirect:/index";
     }
     
-    @GetMapping("/user")
+    @GetMapping("/admin")
     public String user(Model model){
-        List<User> user = iServiceUser.findAllUser(null);
+        List<User> user = iServiceUser.findAllUser(Pageable.unpaged());
         model.addAttribute("user", user);
-        return "user";
+        return "admin";
     }
+   
+    
+    @GetMapping("/deleteUser")
+	public String deleteUser(@RequestParam long id) {
+		iServiceUser.deleteUser(id);
+		return "redirect:/admin";
+	}
     
 }

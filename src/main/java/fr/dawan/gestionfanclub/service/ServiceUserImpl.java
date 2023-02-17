@@ -57,6 +57,17 @@ public class ServiceUserImpl implements IServiceUser{
 		return userRepository.save(user);
 	}
 
+	@Override
+	public User findUserByidUser(long id) {
+		return userRepository.findUserById(id);
+	}
+
+	@Override
+	public User findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 	
 }
