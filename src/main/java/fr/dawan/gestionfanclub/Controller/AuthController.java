@@ -92,6 +92,10 @@ public class AuthController {
     	UserDto userdto = new UserDto();
     	userdto.setFirstName(user.getNom());
     	userdto.setLastName(user.getPrenom());
+    	userdto.setEmail(user.getEmail());
+    	userdto.setPseudo(user.getPseudo());
+    	userdto.setPassword(user.getPassword());
+    	userdto.setRole(user.getRole());
     	userdto.setId(id);
     	
     	
@@ -122,12 +126,16 @@ public String updatedUser(@Valid @ModelAttribute("user") UserDto userDto,
     
     user.setPrenom(userDto.getFirstName());
     user.setNom(userDto.getLastName());
+    user.setPseudo(userDto.getPseudo());
+    user.setEmail(userDto.getEmail());
+    user.setPassword(userDto.getPassword());
+    user.setRole(userDto.getRole());
     
     
     
     
     iServiceUser.updateUser(user);
-    return "redirect:/index";
+    return "redirect:/admin";
 	
 	
 	
