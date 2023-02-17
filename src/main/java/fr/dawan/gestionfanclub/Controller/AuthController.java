@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import fr.dawan.gestionfanclub.dao.UserRepository;
 import fr.dawan.gestionfanclub.dto.UserDto;
 import fr.dawan.gestionfanclub.entities.User;
 import fr.dawan.gestionfanclub.enums.Role;
@@ -77,5 +76,16 @@ public class AuthController {
 		iServiceUser.deleteUser(id);
 		return "redirect:/admin";
 	}
+    
+    @GetMapping("/update")
+    public String updateUser(Model model) {
+    	UserDto user = new UserDto();
+    	model.addAttribute("user",user);
+        return "update";
+    }
+    
+    
+    
+    
     
 }
