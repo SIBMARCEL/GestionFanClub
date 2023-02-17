@@ -44,7 +44,12 @@ public class AuthController {
     	
         return "register_form";
     }
-
+    
+    @GetMapping("/football")
+    public String showFoot() {
+    	return"football";
+    }
+   
     @GetMapping("/newaccount")
     public String showCreateNewAccountForm(Model model) {
     	UserDto user = new UserDto();
