@@ -29,11 +29,7 @@ public class AuthController {
 		return "index";
 	}
 	
-    @GetMapping("/register")
-    public String showForm() {
-        return "user/register_form";
-    }
-    
+
     @GetMapping("/football")
     public String showFoot() {
     	return"rubrique/football";
@@ -79,6 +75,16 @@ public class AuthController {
         return "redirect:/index";
     }
     
+    @PostMapping("/register")
+    public String registerUser() {
+	    return "redirect:/index";
+	}
+    
+    @GetMapping("/register")
+    public String showForm() {
+        return "user/register_form";
+    }
+    
     @GetMapping("/admin")
     public String user(Model model){
         List<User> user = iServiceUser.findAllUser(Pageable.unpaged());
@@ -112,15 +118,12 @@ public class AuthController {
     public String updatedUser(@Valid @ModelAttribute("user") UserDto userDto,BindingResult result,Model model) {
     	User existingEmail = iServiceUser.findUserByEmail(userDto.getEmail());
 		User existingPseudo = iServiceUser.findUserByPseudo(userDto.getPseudo());
-	    if(existingPseudo != null && existingPseudo.getPseudo() != null && !existingPseudo.getPseudo().isEmpty() && existingPseudo.getId() != userDto.getId())
-	    {
+	    if(existingPseudo != null && existingPseudo.getPseudo() != null && !existingPseudo.getPseudo().isEmpty() && existingPseudo.getId() != userDto.getId()){
 	        result.rejectValue("pseudo", null, "There is already an account registered with the same pseudo");
 	    }
-	    
 	    if(existingEmail != null && existingEmail.getEmail() != null && !existingEmail.getEmail().isEmpty() && existingEmail.getId() != userDto.getId()){
 	        result.rejectValue("email", null, "There is already an account registered with the same email");
 	    }
-	
 	    if(result.hasErrors())
 	    {
 	    	System.out.println(result.getAllErrors());
@@ -128,15 +131,13 @@ public class AuthController {
 	        model.addAttribute("user", userDto);
 	        return "user/update";
 	    }
-	    
 	    User user=iServiceUser.findUserByid(userDto.getId());
 	    user.setPrenom(userDto.getPrenom());
 	    user.setNom(userDto.getNom());
 	    user.setEmail(userDto.getEmail());
 	    user.setPseudo(userDto.getPseudo());
 	    user.setPassword(userDto.getPassword());
-	    
-	
+
 	    iServiceUser.updateUser(user);
 	    return "redirect:/admin";
 	}
@@ -155,12 +156,6 @@ public class AuthController {
     	model.addAttribute("user",userdto);
         return "user/view";
     }
-
-    @PostMapping("/register")
-    public String registerUser() {
-	    return "redirect:/index";
-	}
-
 }
 
     

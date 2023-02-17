@@ -13,7 +13,7 @@
     <div class="row justify-content-sm-center h-100">
       <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
         <div class="text-center my-5">
-          <img src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" alt="logo" width="100">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSboO13OQ-3VFBeKhn1OCudVqvasC4Da4L-hY_pAON17UokNsBYzhzK0XNHXwFR767h380&usqp=CAU" alt="logo" width="100">
         </div>
         <div class="card shadow-lg">
           <div class="card-body p-5">
@@ -45,7 +45,7 @@
               </div>
 
               <div class="mb-3">
-                <label class="mb-2 text-muted" for="email">E-Mail Address</label>
+                <label class="mb-2 text-muted" for="email">Adresse électronique</label>
                 <input th:field="*{email}" id="email" type="email" class="form-control" name="email" value="" required>
                 <div class="invalid-feedback">
                   Email invalide
@@ -53,27 +53,22 @@
               </div>
 
               <div class="mb-3">
-                <label class="mb-2 text-muted" for="password">Password</label>
+                <label class="mb-2 text-muted" for="password">Mot de passe</label>
                 <input th:field="*{password}" id="password" type="password" class="form-control" name="password" required>
                 <div class="invalid-feedback">
                   mot de passe obligatoire
                 </div>
               </div>
-
-              <p class="form-text text-muted mb-3">
-                By registering you agree with our terms and condition.
-              </p>
-
               <div class="align-items-center d-flex">
                 <button type="submit" class="btn btn-primary ms-auto">
-                  S'inscrire'
+                  S'inscrire
                 </button>
               </div>
             </form>
           </div>
           <div class="card-footer py-3 border-0">
             <div class="text-center">
-              Already have an account? <a th:href="@{/register}" class="text-dark">Login</a>
+              Vous êtes déjà inscrit ? <a th:href="@{/register}" class="text-dark">Connexion</a>
             </div>
           </div>
         </div>
