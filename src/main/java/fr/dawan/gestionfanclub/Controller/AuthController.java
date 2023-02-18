@@ -29,7 +29,6 @@ public class AuthController {
 		return "index";
 	}
 	
-
     @GetMapping("/football")
     public String showFoot() {
     	return"rubrique/football";
@@ -76,8 +75,18 @@ public class AuthController {
     }
     
     @PostMapping("/register")
-    public String registerUser() {
-	    return "redirect:/index";
+    public String registerUser(@Valid @ModelAttribute("user") UserDto userDto,
+            BindingResult result,
+            Model model) {
+    	User findedUser = iServiceUser.findUserByEmail(userDto.getEmail());
+    	System.out.println(userDto.getPassword());
+    	System.out.println(findedUser.getPassword());
+    	if(findedUser != null && findedUser.getPassword().equals(userDto.getPassword())) {
+    		System.out.println("here it go");
+    		return "redirect:/index";
+    	}
+    	
+    	return "user/register_form";
 	}
     
     @GetMapping("/register")
