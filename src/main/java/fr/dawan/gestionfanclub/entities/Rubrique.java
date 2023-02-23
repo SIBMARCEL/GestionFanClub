@@ -26,10 +26,10 @@ public class Rubrique implements Serializable {
 	
 	private LocalDate dateCreation;
 
-	
-	@OneToMany(mappedBy = "rubrique")
-	private List <Club> club;
-	
+//	
+//	@OneToMany(mappedBy = "rubrique")
+//	private List <Club> club;
+//	
 
 	private int ordre;
 }

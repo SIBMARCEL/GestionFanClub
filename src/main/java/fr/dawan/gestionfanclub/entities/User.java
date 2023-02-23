@@ -37,6 +37,9 @@ public class User implements Serializable{
 	@Column (unique =true, nullable = false)
 	private String email;
 	@Column (nullable = false)
+	
+	private String ImagePath;
+	
 	private String nom;
 	@Column (nullable = false)
 	private String prenom;
@@ -49,7 +52,7 @@ public class User implements Serializable{
 	private String password;
 	private String imgprofil;
 	
-	@OneToMany(mappedBy ="user")
-	private List<Post> posts;
+//	@OneToMany(mappedBy ="user")
+//	private List<Post> posts;
 }
 

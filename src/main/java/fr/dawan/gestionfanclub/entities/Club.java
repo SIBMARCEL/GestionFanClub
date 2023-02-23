@@ -25,13 +25,13 @@ public class Club implements Serializable{
 	@Id
 	private String nomClub;
 	
-	@ManyToOne
-	@JoinColumn(name="rubrique")
-	private Rubrique rubrique;
-	
-	@OneToOne
-	//@JoinColumn(name="post")
-	private Post post;
+//	@ManyToOne
+//	@JoinColumn(name="rubrique")
+//	private Rubrique rubrique;
+//	
+//	@OneToOne
+//	//@JoinColumn(name="post")
+//	private Post post;
 	
 	
 	private String ville;

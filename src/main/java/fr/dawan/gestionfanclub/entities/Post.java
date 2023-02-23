@@ -27,11 +27,11 @@ public class Post implements Serializable {
 	private long id;
 	private LocalDate datePublication;
 	
-	@OneToOne(mappedBy = "post")
-	private Club club;
+//	@OneToOne(mappedBy = "post")
+//	private Club club;
 	
-	@ManyToOne 
-	private User user;
+//	@ManyToOne 
+//	private User user;
 	
 	private String contenu;
 }
